@@ -50,11 +50,11 @@ public class GameActivity extends AppCompatActivity {
                         if (!xOrO){
                             buttonStates[finalI][finalJ] = 1;
                             v.setForeground(getDrawable(R.drawable.eagle));
-                            view.setForeground(getDrawable(R.drawable.eagle));
+                            view.setForeground(getDrawable(R.drawable.rioux));
                         }else{
                             buttonStates[finalI][finalJ] = 2;
                             v.setForeground(getDrawable(R.drawable.rioux));
-                            view.setForeground(getDrawable(R.drawable.rioux));
+                            view.setForeground(getDrawable(R.drawable.eagle));
                         }
                         //gameButtons[finalI][finalJ].setText(xOrO+"");
                         gameButtons[finalI][finalJ].setEnabled(false);
