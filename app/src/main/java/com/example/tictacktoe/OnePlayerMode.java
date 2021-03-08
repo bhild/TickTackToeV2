@@ -40,8 +40,6 @@ public class OnePlayerMode extends AppCompatActivity {
                 gameButtons[i][j] = (Button) findViewById(id);//id);
                 final int finalI = i;
                 final int finalJ = j;
-                buttonStates[aiMove[0]][aiMove[1]]=1;
-                findViewById(id).setForeground(getDrawable(R.drawable.eagle));
                 gameButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
@@ -78,9 +76,11 @@ public class OnePlayerMode extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         }
+        buttonStates[aiMove[0]][aiMove[1]]=1;
+        int id = getResources().getIdentifier("button"+aiMove[0]+""+aiMove[1],"id",getPackageName());
+        findViewById(id).setForeground(getDrawable(R.drawable.eagle));
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override

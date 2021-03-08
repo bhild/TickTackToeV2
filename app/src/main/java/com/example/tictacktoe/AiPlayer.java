@@ -49,7 +49,7 @@ public class AiPlayer extends AppCompatActivity {
         int [] move = bestMove(true,board);
         return new int[] {move[0],move[1]};
     }
-    public int isOneMoveWin(int[][] board,int player) {
+    private int isOneMoveWin(int[][] board,int player) {
         int returnState = 0;
         for(int x = 0; x < 3; x++)
         {
