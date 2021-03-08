@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openGameActivty() {
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, OnePlayerMode.class);
         startActivity(intent);
     }
 

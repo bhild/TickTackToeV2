@@ -1,7 +1,10 @@
 package com.example.tictacktoe;
 
-public class AiPlayer {
-    public void move(int[][] board) {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class AiPlayer extends AppCompatActivity {
+
+    public int[] move(int[][] board) {
         boolean bestMove = false;
         int[] pos = {0,0};
         if (isOneMoveWin(board,1)>0) {
@@ -21,8 +24,7 @@ public class AiPlayer {
                 }
             }
             if(bestMove) {
-                board[pos[0]][pos[1]] = 1;
-                return;
+                return new int[] {pos[0],pos[1]};
             }
         }else if(isOneMoveWin(board,2)==1) {
             for (int i = 0; i < 3; i++) {
@@ -41,23 +43,13 @@ public class AiPlayer {
                 }
             }
             if(bestMove) {
-                board[pos[0]][pos[1]] = 1;
-                return;
-            }
-        }else if(isOneMoveWin(board,2)>1) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (board[i][j]==0) {
-                        board[i][j]=1;
-                        return;
-                    }
-                }
+                return new int[] {pos[0],pos[1]};
             }
         }
-        int [] move = bestMove(board,true);
-        board[move[0]][move[1]] = 1;
+        int [] move = bestMove(true,board);
+        return new int[] {move[0],move[1]};
     }
-    private int isOneMoveWin(int[][] board,int player) {
+    public int isOneMoveWin(int[][] board,int player) {
         int returnState = 0;
         for(int x = 0; x < 3; x++)
         {
@@ -83,13 +75,13 @@ public class AiPlayer {
     }
     private boolean gameWon(int[][] board){
         boolean returnState = false;
-        for(int x = 0; x < 3; x++)//check for vertical wins
+        for(int x = 0; x < 3; x++)
         {
             if (board[x][0] == board[x][1] && board[x][1] == board[x][2] && board[x][0] != 0) {
                 returnState = true;
             }
         }
-        for(int y = 0; y < 3; y++)//check for horizontal wins
+        for(int y = 0; y < 3; y++)
         {
             if (board[0][y] == board[1][y] && board[1][y] == board[2][y] && board[0][y] != 0) {
                 returnState = true;
@@ -105,7 +97,7 @@ public class AiPlayer {
         }
         return returnState;
     }
-    private int[] bestMove(int[][] board,boolean turn){
+    private int[] bestMove(boolean turn, int[][] board){
         int[] out = {0,0};
         int[] state = new int[3];
         for (int i = 0; i < 3; i++) {
@@ -171,4 +163,5 @@ public class AiPlayer {
         }
         return returnState;
     }
+
 }
