@@ -59,19 +59,32 @@ public class OnePlayerMode extends AppCompatActivity {
                                 TextView tv1 = findViewById(R.id.p1Text);
                                 tv1.setText("Player 1: "+score[0]);
                                 Toast.makeText(getApplicationContext(),"Player 1 wins",Toast.LENGTH_LONG).show();
+                                resetBoard();
+                                aiMove = new AiPlayer().move(buttonStates);
+                                buttonStates[aiMove[0]][aiMove[1]]=1;
+                                int id = getResources().getIdentifier("button"+aiMove[0]+""+aiMove[1],"id",getPackageName());
+                                findViewById(id).setForeground(getDrawable(R.drawable.eagle));
                                 view.setForeground(getDrawable(R.drawable.rioux));
                             }else{
                                 score[1]++;
                                 TextView tv1 = findViewById(R.id.p2Text);
                                 tv1.setText("Player 2: "+score[1]);
                                 Toast.makeText(getApplicationContext(),"Player 2 wins",Toast.LENGTH_LONG).show();
+                                resetBoard();
+                                aiMove = new AiPlayer().move(buttonStates);
+                                buttonStates[aiMove[0]][aiMove[1]]=1;
+                                int id = getResources().getIdentifier("button"+aiMove[0]+""+aiMove[1],"id",getPackageName());
+                                findViewById(id).setForeground(getDrawable(R.drawable.eagle));
                                 view.setForeground(getDrawable(R.drawable.rioux));
                             }
-                            resetBoard();
                         }
                         else if (isCatsGame()){
                             resetBoard();
                             Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
+                            buttonStates[aiMove[0]][aiMove[1]]=1;
+                            aiMove = new AiPlayer().move(buttonStates);
+                            int id = getResources().getIdentifier("button"+aiMove[0]+""+aiMove[1],"id",getPackageName());
+                            findViewById(id).setForeground(getDrawable(R.drawable.eagle));
                             view.setForeground(getDrawable(R.drawable.rioux));
                         }
                     }
