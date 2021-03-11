@@ -170,5 +170,4 @@ public class AiPlayer extends AppCompatActivity {
         }
         return returnState;//returns if a board is a cats game
     }
-
 }
