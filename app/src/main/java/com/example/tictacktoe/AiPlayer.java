@@ -47,6 +47,17 @@ public class AiPlayer extends AppCompatActivity {
             if(bestMove) {
                 return new int[] {pos[0],pos[1]};//returns the best move
             }
+            else if(isOneMoveWin(board,2)>1){
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if(bestMove) {
+                            //this runs if the best move is found
+                        }else if (board[i][j]==0) {//this runs if the tile is empty
+                            return new int[]{i,j};
+                        }
+                    }
+                }
+            }
         }
         //runs the other move calculation here
         int [] move = bestMove(true,board);
