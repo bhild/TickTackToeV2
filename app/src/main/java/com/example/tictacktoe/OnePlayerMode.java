@@ -1,3 +1,4 @@
+
 package com.example.tictacktoe;
 
 import androidx.annotation.RequiresApi;
@@ -13,12 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Console;
-import java.util.stream.IntStream;
 
-import static java.util.Arrays.stream;
-
-public class GameActivity extends AppCompatActivity {
+public class OnePlayerMode extends AppCompatActivity {
 
     private Button doneButton;
     int[][] buttonStates = new int[3][3];//creates a 3x3 array
@@ -34,57 +31,35 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
         final ImageView view = findViewById(R.id.playerState);
+        setContentView(R.layout.activity_game);
+        final int[] aiMove = new AiPlayer().move(buttonStates);
         for (int i = 0;i<3;i++){
             for(int j = 0; j<3;j++){
                 //String id = "button"+i+j;
+                //clerifictation this gets the button i + j and gets its id and stores it here
                 int id = getResources().getIdentifier("button"+i+""+j,"id",getPackageName());
-                gameButtons[i][j] = (Button) findViewById(id);//id);
+                gameButtons[i][j] = (Button) findViewById(id);
                 final int finalI = i;
                 final int finalJ = j;
                 gameButtons[i][j].setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
                     public void onClick(View v) {
-                        if (!xOrO){
-                            buttonStates[finalI][finalJ] = 1;
-                            v.setForeground(getDrawable(R.drawable.eagle));
-                            view.setForeground(getDrawable(R.drawable.rioux));
-                        }else{
-                            buttonStates[finalI][finalJ] = 2;
-                            v.setForeground(getDrawable(R.drawable.rioux));
-                            view.setForeground(getDrawable(R.drawable.eagle));
-                        }
-                        //gameButtons[finalI][finalJ].setText(xOrO+"");
+                        buttonStates[finalI][finalJ] = 2;
+                        v.setForeground(getDrawable(R.drawable.rioux));
                         gameButtons[finalI][finalJ].setEnabled(false);
-                        xOrO=!xOrO;
-                        if(gameWon()){
-                           if(xOrO){
-                               score[0]++;
-                               TextView tv1 = findViewById(R.id.p1Text);
-                               tv1.setText("Player 1: "+score[0]);
-                               Toast.makeText(getApplicationContext(),"Player 1 wins",Toast.LENGTH_LONG).show();
-                               view.setForeground(getDrawable(R.drawable.eagle));
-                           }else{
-                               score[1]++;
-                               TextView tv1 = findViewById(R.id.p2Text);
-                               tv1.setText("Player 2: "+score[1]);
-                               Toast.makeText(getApplicationContext(),"Player 2 wins",Toast.LENGTH_LONG).show();
-                               view.setForeground(getDrawable(R.drawable.eagle));
-                           }
-                            resetBoard();
-                        }
-                        if (isCatsGame()){
-                            resetBoard();
-                            Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
-                            view.setForeground(getDrawable(R.drawable.eagle));
-                        }
+                        gameReseterPlayer();
+                        gameReseterAI();
+                        Log.i("info",aiMove[0]+","+aiMove[1]);
+
                     }
                 });
-
             }
         }
+        buttonStates[aiMove[0]][aiMove[1]]=1;
+        int id = getResources().getIdentifier("button"+aiMove[0]+""+aiMove[1],"id",getPackageName());
+        findViewById(id).setForeground(getDrawable(R.drawable.eagle));
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +105,7 @@ public class GameActivity extends AppCompatActivity {
         else if(buttonStates[0][2] == buttonStates[1][1] && buttonStates[1][1] == buttonStates[2][0] && buttonStates[0][2] != 0)
         {
             returnState = true;
+
         }
         return returnState;
     }
@@ -145,6 +121,50 @@ public class GameActivity extends AppCompatActivity {
                 gameButtons[i][j].setForeground(null);
                 xOrO = false;
             }
+        }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void gameReseterAI(){
+        if(gameWon()){
+            score[1]++;
+            TextView tv1 = findViewById(R.id.p2Text);
+            tv1.setText("Player 2: "+score[1]);
+            Toast.makeText(getApplicationContext(),"Player 2 wins",Toast.LENGTH_LONG).show();
+            resetBoard();
+            buttonStates[1][1]=1;
+            int id = getResources().getIdentifier("button"+1+""+1,"id",getPackageName());
+            findViewById(id).setForeground(getDrawable(R.drawable.eagle));
+        }
+        else if (isCatsGame()){
+            Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
+            resetBoard();
+            buttonStates[1][1]=1;
+            int id = getResources().getIdentifier("button"+1+""+1,"id",getPackageName());
+            findViewById(id).setForeground(getDrawable(R.drawable.eagle));
+        }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void gameReseterPlayer(){
+        if(gameWon()){
+            score[0]++;
+            TextView tv1 = findViewById(R.id.p1Text);
+            tv1.setText("Player 1: "+score[0]);
+            Toast.makeText(getApplicationContext(),"Player 1 wins",Toast.LENGTH_LONG).show();
+            resetBoard();
+            int[] aiMove = new AiPlayer().move(buttonStates);
+            buttonStates[aiMove[0]][aiMove[1]] = 1;
+            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.eagle));
+        }
+        else if (isCatsGame()){
+            Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
+            resetBoard();
+            int[] aiMove = new AiPlayer().move(buttonStates);
+            buttonStates[aiMove[0]][aiMove[1]] = 1;
+            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.eagle));
+        }else{
+            int[] aiMove = new AiPlayer().move(buttonStates);
+            buttonStates[aiMove[0]][aiMove[1]] = 1;
+            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.eagle));
         }
     }
 }

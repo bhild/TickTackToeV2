@@ -11,7 +11,10 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testMoveWin001(){//ai makes the move to win
+        AiPlayer p = new AiPlayer();
+        int[][] board = {{1,0,1},{2,0,2},{0,0,0}};//array after move {1,1,1},{2,0,2},{0,0,0}
+        //tile changed {0,1}
+        assertArrayEquals(new int[] {0,1},p.move(board));
     }
 }

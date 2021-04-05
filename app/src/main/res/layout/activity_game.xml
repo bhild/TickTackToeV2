@@ -8,7 +8,7 @@
     android:descendantFocusability="beforeDescendants"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".GameActivity">
+    tools:context=".OnePlayerMode">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -18,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".OnePlayerMode"></activity>
+        <activity android:name=".AiPlayer"></activity>
+
     </application>
 
 </manifest>

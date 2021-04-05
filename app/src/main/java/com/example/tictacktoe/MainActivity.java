@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button gameButton;
     private Button infoButton;
+    private Button singlePlayerButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openGameActivty();
+            }
+        });
+        singlePlayerButton = (Button) findViewById(R.id.gameButton2);
+        singlePlayerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSinglePlayerActivty();
             }
         });
 
@@ -41,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
-
+    public void openSinglePlayerActivty() {
+        Intent intent = new Intent(this, OnePlayerMode.class);
+        startActivity(intent);
+    }
     public void openInfoActivity() {
         Intent intent2 = new Intent(this, InfoActivity.class);
         startActivity(intent2);
