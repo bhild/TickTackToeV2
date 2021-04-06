@@ -4,38 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0CDFF"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/background"
     tools:context=".MainActivity">
 
     <TextView
-        android:text="Welcome to VVHS Tic Tac Toe"
-        android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/eagleRed"
-        android:fontFamily="@font/colleges"/>
+        android:fontFamily="@font/bold"
+        android:text="Tic Tac Toe"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="22dp" />
 
     <Button
         android:id="@+id/infoButton"
-        android:layout_width="wrap_content"
+        android:layout_width="123dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:fontFamily="@font/bold"
         android:text="How to Play"
-        android:fontFamily="@font/colleges"/>
+        android:textColor="#7A74FF" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="14dp" />
 
     <Button
         android:id="@+id/gameButton"
-        android:layout_width="wrap_content"
+        android:background="@android:color/white"
+        android:layout_width="123dp"
         android:layout_height="wrap_content"
-        android:text="Start Game"
-        android:fontFamily="@font/colleges"/>
+        android:fontFamily="@font/bold"
+        android:text="Two Players"
+        android:textColor="#7A74FF" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="14dp" />
 
     <Button
         android:id="@+id/gameButton2"
-        android:layout_width="wrap_content"
+        android:background="@android:color/white"
+        android:layout_width="123dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/colleges"
-        android:text="Single Player" />
+        android:fontFamily="@font/bold"
+        android:text="Single Player"
+        android:textColor="#7A74FF" />
 
 </LinearLayout>
