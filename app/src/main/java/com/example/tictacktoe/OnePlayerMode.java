@@ -47,7 +47,7 @@ public class OnePlayerMode extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         buttonStates[finalI][finalJ] = 2;
-                        v.setForeground(getDrawable(R.drawable.rioux));
+                        v.setForeground(getDrawable(R.drawable.rioux2));
                         gameButtons[finalI][finalJ].setEnabled(false);
                         gameReseterPlayer();
                         gameReseterAI();
@@ -59,7 +59,7 @@ public class OnePlayerMode extends AppCompatActivity {
         }
         buttonStates[aiMove[0]][aiMove[1]]=1;
         int id = getResources().getIdentifier("button"+aiMove[0]+""+aiMove[1],"id",getPackageName());
-        findViewById(id).setForeground(getDrawable(R.drawable.eagle));
+        findViewById(id).setForeground(getDrawable(R.drawable.flower));
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,14 +133,14 @@ public class OnePlayerMode extends AppCompatActivity {
             resetBoard();
             buttonStates[1][1]=1;
             int id = getResources().getIdentifier("button"+1+""+1,"id",getPackageName());
-            findViewById(id).setForeground(getDrawable(R.drawable.eagle));
+            findViewById(id).setForeground(getDrawable(R.drawable.flower));
         }
         else if (isCatsGame()){
             Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
             resetBoard();
             buttonStates[1][1]=1;
             int id = getResources().getIdentifier("button"+1+""+1,"id",getPackageName());
-            findViewById(id).setForeground(getDrawable(R.drawable.eagle));
+            findViewById(id).setForeground(getDrawable(R.drawable.flower));
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -153,18 +153,18 @@ public class OnePlayerMode extends AppCompatActivity {
             resetBoard();
             int[] aiMove = new AiPlayer().move(buttonStates);
             buttonStates[aiMove[0]][aiMove[1]] = 1;
-            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.eagle));
+            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.flower));
         }
         else if (isCatsGame()){
             Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
             resetBoard();
             int[] aiMove = new AiPlayer().move(buttonStates);
             buttonStates[aiMove[0]][aiMove[1]] = 1;
-            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.eagle));
+            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.flower));
         }else{
             int[] aiMove = new AiPlayer().move(buttonStates);
             buttonStates[aiMove[0]][aiMove[1]] = 1;
-            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.eagle));
+            gameButtons[aiMove[0]][aiMove[1]].setForeground(getDrawable(R.drawable.flower));
         }
     }
 }

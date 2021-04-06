@@ -49,12 +49,12 @@ public class GameActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (!xOrO){
                             buttonStates[finalI][finalJ] = 1;
-                            v.setForeground(getDrawable(R.drawable.eagle));
-                            view.setForeground(getDrawable(R.drawable.rioux));
+                            v.setForeground(getDrawable(R.drawable.flower));
+                            view.setForeground(getDrawable(R.drawable.rioux2));
                         }else{
                             buttonStates[finalI][finalJ] = 2;
-                            v.setForeground(getDrawable(R.drawable.rioux));
-                            view.setForeground(getDrawable(R.drawable.eagle));
+                            v.setForeground(getDrawable(R.drawable.rioux2));
+                            view.setForeground(getDrawable(R.drawable.flower));
                         }
                         //gameButtons[finalI][finalJ].setText(xOrO+"");
                         gameButtons[finalI][finalJ].setEnabled(false);
@@ -65,20 +65,20 @@ public class GameActivity extends AppCompatActivity {
                                TextView tv1 = findViewById(R.id.p1Text);
                                tv1.setText("Player 1: "+score[0]);
                                Toast.makeText(getApplicationContext(),"Player 1 wins",Toast.LENGTH_LONG).show();
-                               view.setForeground(getDrawable(R.drawable.eagle));
+                               view.setForeground(getDrawable(R.drawable.flower));
                            }else{
                                score[1]++;
                                TextView tv1 = findViewById(R.id.p2Text);
                                tv1.setText("Player 2: "+score[1]);
                                Toast.makeText(getApplicationContext(),"Player 2 wins",Toast.LENGTH_LONG).show();
-                               view.setForeground(getDrawable(R.drawable.eagle));
+                               view.setForeground(getDrawable(R.drawable.flower));
                            }
                             resetBoard();
                         }
                         if (isCatsGame()){
                             resetBoard();
                             Toast.makeText(getApplicationContext(),"No one wins",Toast.LENGTH_LONG).show();
-                            view.setForeground(getDrawable(R.drawable.eagle));
+                            view.setForeground(getDrawable(R.drawable.flower));
                         }
                     }
                 });

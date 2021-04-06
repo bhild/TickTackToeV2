@@ -10,10 +10,12 @@
     android:visibility="visible"
     tools:context=".OnePlayerMode">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:background="@drawable/banner"
+        android:layout_height="150dp"
+        android:background="@drawable/top"
+        android:baselineAligned="false"
         android:clipChildren="false"
         android:clipToPadding="false">
 
@@ -21,131 +23,149 @@
             android:id="@+id/p1Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/colleges"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/bold"
             android:text="Player 1: 0"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/p2Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/p1Text"
-            android:fontFamily="@font/colleges"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/bold"
             android:text="Player 2: 0"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/p1Text" />
 
         <Button
             android:id="@+id/doneButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="150dp"
-            android:fontFamily="@font/colleges"
-            android:text="Back" />
+            android:layout_marginEnd="148dp"
+            android:background="@android:color/white"
+            android:fontFamily="@font/bold"
+            android:text="Back"
+            android:textColor="#7A74FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/playerState"
-            android:layout_width="115dp"
-            android:layout_height="74dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="0dp"/>
+            android:layout_width="93dp"
+            android:layout_height="88dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <Button
             android:id="@+id/button00"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="#7A74FF"
             android:textSize="60sp" />
 
         <Button
             android:id="@+id/button01"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/eagleRed"
+            android:background="#E0CDFF"
             android:textSize="60sp" />
 
         <Button
             android:id="@+id/button02"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="#7A74FF"
             android:textSize="60sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <Button
             android:id="@+id/button10"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/eagleRed"
+            android:background="#E0CDFF"
             android:textSize="60sp" />
 
         <Button
             android:id="@+id/button11"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="#7A74FF"
             android:textSize="60sp" />
 
         <Button
             android:id="@+id/button12"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/eagleRed"
+            android:background="#E0CDFF"
             android:textSize="60sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <Button
             android:id="@+id/button20"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="#7A74FF"
             android:textSize="60sp" />
 
         <Button
             android:id="@+id/button21"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/eagleRed"
+            android:background="#E0CDFF"
             android:textSize="60sp" />
 
         <Button
             android:id="@+id/button22"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             android:layout_weight="1"
-            android:background="@color/background"
+            android:background="#7A74FF"
             android:textSize="60sp" />
 
     </LinearLayout>
